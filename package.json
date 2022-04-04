@@ -1,8 +1,11 @@
 {
-  "name": "style-system",
+  "name": "@mark-bc/style-system",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
+    "@chakra-ui/react": "^1.8.7",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -10,6 +13,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "framer-motion": "^6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.0",
@@ -18,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env BABEL_ENV=production babel src -d dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -26,6 +30,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ]
     ]
   },
   "browserslist": {
@@ -39,5 +53,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "cross-env": "^7.0.3"
+  },
+  "description": "style system for bc",
+  "main": "dist/index.js",
+  "author": "Mark <mark@betcloud.com.au>",
+  "repository": "https://github.com/bc-mark/style-system.git",
+  "license": "MIT"
 }
