@@ -1,6 +1,6 @@
 {
   "name": "@bc-mark/style-system",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "private": false,
   "dependencies": {
     "@chakra-ui/react": "^1.8.7",
@@ -13,7 +13,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
-    "framer-motion": "^6",
+    "framer-motion": "4.1.17",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.0",
@@ -22,7 +22,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env BABEL_ENV=production babel src -d dist",
+    "build": "react-scripts build",
+    "publish:npm": "rm -rf dist && mkdir dist && babel ./src -d dist --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,12 +35,7 @@
   },
   "babel": {
     "presets": [
-      [
-        "react-app",
-        {
-          "absoluteRuntime": false
-        }
-      ]
+      "@babel/preset-react"
     ]
   },
   "browserslist": {
@@ -56,11 +52,17 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
+    "@babel/preset-react": "^7.16.7",
     "auto": "^10.36.5",
     "cross-env": "^7.0.3"
   },
   "description": "style system for bc",
-  "main": "dist/index.js",
+  "main": "dist/index.ts",
+  "files": [
+    "dist",
+    "node_modules",
+    "README.md"
+  ],
   "author": "Mark <mark@betcloud.com.au>",
   "repository": "https://github.com/bc-mark/style-system.git",
   "license": "MIT"
